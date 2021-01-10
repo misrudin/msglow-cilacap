@@ -5,6 +5,8 @@ $bg-primary: #f7f9fc;
 $dark: #222831;
 $primary: #F4B7C5;
 $secondary: #E58899;
+$blue1: #08A9F0;
+$blue2: #40C0FA;
 
 //resposive
 
@@ -109,6 +111,7 @@ body {
         padding: 10px 24px;
         color: white;
         text-decoration: none;
+        box-shadow: 0 0 2px rgba($color: #000000, $alpha: .2);
         &:hover{
             background-color: darken($color: $secondary, $amount: 20%);
 
@@ -123,10 +126,21 @@ body {
     .header_main{
         position: relative;
         overflow: hidden;
+        background: linear-gradient(155deg, #21d4fd 25%, #b721ff 95%);	
         .container-text{
                 opacity: .0;
                 transform: translate(-500px, 0);
                 transition: .5s ease-in-out;
+                h1{
+                    font-size: 3em;
+                    font-weight: 700;
+                    color: white;
+                    text-shadow: 0 0 5px rgba($color: #000000, $alpha: .1);
+                }
+                p{
+                    color: white;
+                    text-shadow: 0 0 5px rgba($color: #000000, $alpha: .4);
+                }
                 &.showing{
                     opacity: 1;
                     transform: translate(0,0);
@@ -157,7 +171,7 @@ body {
             width: 20px;
             height: 20px;
             background: rgba(255, 255, 255, 0.2);
-            animation: animate 25s linear infinite;
+            animation: animate 5s linear infinite;
             bottom: -150px;
             
         }
@@ -404,6 +418,165 @@ body {
     .testimoni{
         min-height: 200px;
         background-color: rgba($color: $secondary, $alpha: .1);
+
+        ul{
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            padding: 0;
+            margin: 0;
+            gap: 20px;
+            @include xs {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            @include sm {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            @include md {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include lg {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            li{
+                padding: 0;
+                margin: 0;
+
+                  opacity: 0;
+                  transform: translate(0, -50px);
+                  transition: .35s;
+
+                  &.showing{
+                      opacity: 1;
+                      transform: translate(0,0);
+                  }
+
+                .card-testimoni{
+                    background-color: white;
+                    padding: 20px;
+                    border-radius: 5px;
+                    box-shadow: 0 0 20px -1px rgba($color: $dark, $alpha: .1);
+                   .header{
+                       display: flex;
+                       align-items: center;
+                       .box-image{
+                        width: 70px;
+                        height: 70px;
+                        border-radius: 50%;
+                        margin-right: 10px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: linear-gradient(135deg, #21d4fd 25%, #b721ff 75%);	
+                        padding: 2px;
+                       }
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 50%;
+                        background-color: white;
+                    }
+                    .detail-user{
+                        .name{
+                            font-size: 1.2em;
+                            font-weight: 600;
+                            color: $dark;
+                        }
+                        .job{
+                            font-size: .9em;
+                            font-weight: 500;
+                            color: lighten($color: $dark, $amount: 55%); 
+                        }
+                    }
+                   }
+                    .review{
+                        margin-top: 10px;
+                        p{
+                            font-size: .9em;
+                            font-weight: 500;
+                            color: lighten($color: $dark, $amount: 5%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .store-map{
+        min-height: 300px;
+        background-image: url('/assets/map.png');
+        background-repeat: repeat;
+        background-size: contain;
+        background-position: center;
+        background-color: rgba($color: $secondary, $alpha: .1);
+
+        .item{
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            img{
+                width: 24px;
+                height: 24px;
+                object-fit: contain;
+                margin-right: 20px;
+            }
+            h5{
+                font-weight: 500;
+                font-size: 1em;
+            }
+        }
+
+        .owners{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            @include xs {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            @include sm {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            @include md {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include lg {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .owner{
+                background-color: white;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+                .box-image{
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                    margin-bottom: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: linear-gradient(135deg, #21d4fd 25%, #b721ff 75%);	
+                    padding: 2px;
+                   }
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    background-color: white;
+                }
+            }
+        }
     }
 
     .footer{
@@ -421,10 +594,11 @@ body {
   cursor: pointer;
   transition: 0.3s;
   text-decoration: none !important;
-  box-shadow: 0 0 20px 0px rgba($color: $dark, $alpha: 0.1);
+  box-shadow: 0 0 2px 0px rgba($color: $dark, $alpha: 0.1);
+// border: 1px solid lighten($color: $dark, $amount: 80%);
 
   &:hover {
-    box-shadow: 0 0 20px 0px rgba($color: $dark, $alpha: 0.1);
+    box-shadow: 0 0 5px 0px rgba($color: $dark, $alpha: 0.1);
   }
 
   img {
@@ -455,4 +629,10 @@ body {
     color: darken($color: $secondary, $amount: 20%);
     font-weight: 500;
   }
+}
+
+.title-section{
+    color: $dark;
+    font-size: 1.2em;
+    font-weight: 600;
 }

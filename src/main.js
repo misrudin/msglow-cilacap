@@ -36,7 +36,7 @@ $(window).scroll(function(){
     $('#product-list ul li').each(function(i){
         setTimeout(function(){
             $('#product-list ul li').eq(i).addClass('showing')
-        }, 200*i)
+        }, 300*i)
     })
     $('#header-img').removeClass("showing")
      $('#header-text').removeClass("showing")
@@ -47,9 +47,43 @@ $(window).scroll(function(){
 
 
     const storeTop = $("#store").offset().top
-    if(wScroll > storeTop-1000){
+    if(wScroll > storeTop-650){
         $('#image-contact').addClass("showing")
     }else{
         $('#image-contact').removeClass("showing")
     }
+
+    //testtimoni paralax
+    const testitop = $("#testimoni").offset().top
+   if(wScroll > testitop - 1000){
+       $('#testimoni ul li').each(function(i){
+           setTimeout(function(){
+               $('#testimoni ul li').eq(i).addClass('showing')
+           }, 300*i)
+       })
+   }
 })
+
+
+///testimoni
+let html =(name = "John Doe", review)=> `
+                <li>
+                    <div class="card-testimoni">
+                        <div class="header">
+                            <div class="box-image">
+                                <img src="/assets/concealer.svg" alt="Image People">
+                            </div>
+                            <div class="detail-user">
+                                <p class="name">${name}</p>
+                                <p class="job">Web Developer</p>
+                            </div>
+                        </div>
+                        <div class="review">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                        </div>
+                    </div>
+                </li>
+`
+$('#testimoni ul').append(html("Jonh Smith"))
+$('#testimoni ul').append(html("Berta Bendeta"))
+$('#testimoni ul').append(html("Susi Susanti"))
